@@ -11,28 +11,28 @@ public class TranslateScoreTest extends ScoreTestBase {
 
     @Test
     public void onlyPlayerOneScores() {
-        score.addPlayer1Point();
+        score.scorePointFor(player1);
         assertEquals("Fifteen - Love", score.toString());
-        score.addPlayer1Point();
+        score.scorePointFor(player1);
         assertEquals("Thirty - Love", score.toString());
-        score.addPlayer1Point();
+        score.scorePointFor(player1);
         assertEquals("Forty - Love", score.toString());
     }
 
     @Test
     public void onlyPlayerTwoScores() {
-        score.addPlayer2Point();
+        score.scorePointFor(player2);
         assertEquals("Love - Fifteen", score.toString());
-        score.addPlayer2Point();
+        score.scorePointFor(player2);
         assertEquals("Love - Thirty", score.toString());
-        score.addPlayer2Point();
+        score.scorePointFor(player2);
         assertEquals("Love - Forty", score.toString());
     }
 
     @Test
     public void bothPlayersScore_butNoTie() {
         addPlayer1Points(2);
-        score.addPlayer2Point();
+        score.scorePointFor(player2);
         assertEquals("Thirty - Fifteen", score.toString());
         addPlayer2Points(2);
         assertEquals("Thirty - Forty", score.toString());
@@ -41,11 +41,11 @@ public class TranslateScoreTest extends ScoreTestBase {
     @Test
     public void tiedScore_upTo30() {
         assertEquals("Love all", score.toString());
-        score.addPlayer1Point();
-        score.addPlayer2Point();
+        score.scorePointFor(player1);
+        score.scorePointFor(player2);
         assertEquals("Fifteen all", score.toString());
-        score.addPlayer1Point();
-        score.addPlayer2Point();
+        score.scorePointFor(player1);
+        score.scorePointFor(player2);
         assertEquals("Thirty all", score.toString());
     }
 

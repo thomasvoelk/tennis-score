@@ -15,26 +15,18 @@ public class Score {
         this.player2 = player2;
     }
 
-    public int getPlayer1Points() {
-        return pointsForPlayer(player1);
+    public void scorePointFor(Player player)  {
+        points.put(player, getPointsFor(player) + 1);
     }
 
-    public void addPlayer1Point() {
-        points.put(player1, pointsForPlayer(player1) + 1);
-    }
-
-    public int getPlayer2Points() {
-        return pointsForPlayer(player2);
-    }
-
-    public void addPlayer2Point() {
-        points.put(player2, pointsForPlayer(player2) + 1);
+    public int getPointsFor(Player player) {
+        return points.get(player);
     }
 
     @Override
     public String toString() {
-        int player1Points = pointsForPlayer(player1);
-        int player2Points = pointsForPlayer(player2);
+        int player1Points = getPointsFor(player1);
+        int player2Points = getPointsFor(player2);
         String score1 = pointsToString(player1Points);
         String score2 = pointsToString(player2Points);
         if (player1Points != player2Points) {
@@ -44,10 +36,6 @@ public class Score {
         } else {
             return "Deuce";
         }
-    }
-
-    private int pointsForPlayer(Player player ) {
-        return points.get(player);
     }
 
     private String pointsToString(int points) {

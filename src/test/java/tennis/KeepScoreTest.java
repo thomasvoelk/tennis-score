@@ -8,26 +8,24 @@ public class KeepScoreTest extends ScoreTestBase {
 
     @Test
     public void newScoreStartsAtZero() {
-        assertEquals(0, score.getPlayer1Points());
-        assertEquals(0, score.getPlayer2Points());
+        assertEquals(0, score.getPointsFor(player1));
+        assertEquals(0, score.getPointsFor(player2));
     }
 
     @Test
     public void addOnePointToScore() {
-        score.addPlayer1Point();
-        assertEquals(1, score.getPlayer1Points());
-        assertEquals(0, score.getPlayer2Points());
+        score.scorePointFor(player1);
+        assertEquals(1, score.getPointsFor(player1));
+        assertEquals(0, score.getPointsFor(player2));
     }
 
 
     @Test
     public void addMultiplePointsToScore() {
-        score.addPlayer1Point();
-        score.addPlayer1Point();
-        score.addPlayer1Point();
-        score.addPlayer2Point();
-        assertEquals(3, score.getPlayer1Points());
-        assertEquals(1, score.getPlayer2Points());
+        addPlayer1Points(3);
+        score.scorePointFor(player2);
+        assertEquals(3, score.getPointsFor(player1));
+        assertEquals(1, score.getPointsFor(player2));
     }
 
 

@@ -16,13 +16,13 @@ public class ScoreTestBase {
 
     protected void addPlayer1Points(int points) {
         for (int i = 0; i < points; i++) {
-            score.addPlayer1Point();
+            score.scorePointFor(player1);
         }
     }
 
     protected void addPlayer2Points(int points) {
         for (int i = 0; i < points; i++) {
-            score.addPlayer2Point();
+            score.scorePointFor(player2);
         }
     }
 }
