@@ -71,14 +71,15 @@ public class TranslateScoreTest extends ScoreTestBase {
     }
 
     @Test
-    public void gamePlayer1_noPointsForPlayer2() {
+    public void gamePlayer1() {
         addPoints(player1, 4);
         assertEquals("Game John", score.toString());
     }
 
     @Test
-    public void gamePlayer2_noPointsForPlayer1() {
+    public void gamePlayer2() {
         addPoints(player2, 4);
         assertEquals("Game Ivan", score.toString());
     }
+
 }

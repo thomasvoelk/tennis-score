@@ -29,7 +29,7 @@ public class Score {
         int player2Points = getPointsFor(player2);
         String score1 = pointsToString(player1Points);
         String score2 = pointsToString(player2Points);
-        if (player1Points != player2Points) {
+        if (!isTied()) {
             if (player1Points < 4 && player2Points < 4) {
                 return String.format("%s - %s", score1, score2);
             } else if ((player1Points > 3 && player1Points > player2Points + 1) || player2Points > 3 && player2Points > player1Points + 1) {
@@ -39,11 +39,22 @@ public class Score {
                 Player playerInFront = player1Points > player2Points ? player1 : player2;
                 return String.format("Advantage %s", playerInFront.getName());
             }
-        } else if (player1Points < 3) {
-            return String.format("%s all", score1);
+        } else {
+            return tiedScoreToString();
+        }
+    }
+
+
+    private String tiedScoreToString() {
+        if (getPointsFor(player1) < 3) {
+            return String.format("%s all", pointsToString(getPointsFor(player1)));
         } else {
             return "Deuce";
         }
+    }
+
+    private boolean isTied() {
+        return getPointsFor(player1) == getPointsFor(player2);
     }
 
     private String pointsToString(int points) {
