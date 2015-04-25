@@ -14,7 +14,7 @@ public class KeepScoreTest extends ScoreTestBase {
 
     @Test
     public void addOnePointToScore() {
-        score.scorePointFor(player1);
+        addPoints(player1, 1);
         assertEquals(1, score.getPointsFor(player1));
         assertEquals(0, score.getPointsFor(player2));
     }
@@ -22,8 +22,8 @@ public class KeepScoreTest extends ScoreTestBase {
 
     @Test
     public void addMultiplePointsToScore() {
-        addPlayer1Points(3);
-        score.scorePointFor(player2);
+        addPoints(player1, 3);
+        addPoints(player2, 1);
         assertEquals(3, score.getPointsFor(player1));
         assertEquals(1, score.getPointsFor(player2));
     }

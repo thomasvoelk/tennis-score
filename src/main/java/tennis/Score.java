@@ -15,7 +15,7 @@ public class Score {
         this.player2 = player2;
     }
 
-    public void scorePointFor(Player player)  {
+    public void scorePointFor(Player player) {
         points.put(player, getPointsFor(player) + 1);
     }
 
@@ -30,8 +30,13 @@ public class Score {
         String score1 = pointsToString(player1Points);
         String score2 = pointsToString(player2Points);
         if (player1Points != player2Points) {
-            return String.format("%s - %s", score1, score2);
-        } else if(player1Points < 3) {
+            if (player1Points < 4 && player2Points < 4) {
+                return String.format("%s - %s", score1, score2);
+            } else {
+                Player playerInFront = player1Points > player2Points ? player1 : player2;
+                return String.format("Advantage %s", playerInFront.getName());
+            }
+        } else if (player1Points < 3) {
             return String.format("%s all", score1);
         } else {
             return "Deuce";

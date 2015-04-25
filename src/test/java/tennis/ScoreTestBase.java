@@ -14,15 +14,9 @@ public class ScoreTestBase {
         score = new Score(player1, player2);
     }
 
-    protected void addPlayer1Points(int points) {
+    protected void addPoints(Player player, int points) {
         for (int i = 0; i < points; i++) {
-            score.scorePointFor(player1);
-        }
-    }
-
-    protected void addPlayer2Points(int points) {
-        for (int i = 0; i < points; i++) {
-            score.scorePointFor(player2);
+            score.scorePointFor(player);
         }
     }
 }
