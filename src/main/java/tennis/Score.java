@@ -22,12 +22,18 @@ public class Score {
 
     @Override
     public String toString() {
-        String score1 = getString(player1Points);
-        String score2 = getString(player2Points);
-        return String.format("%s - %s", score1, score2);
+        String score1 = pointsToString(player1Points);
+        String score2 = pointsToString(player2Points);
+        if (player1Points != player2Points) {
+            return String.format("%s - %s", score1, score2);
+        } else if(player1Points < 3) {
+            return String.format("%s all", score1);
+        } else {
+            return "Deuce";
+        }
     }
 
-    private String getString(int points) {
+    private String pointsToString(int points) {
         String score1 = "Love";
         if (points == 1) {
             score1 = "Fifteen";
