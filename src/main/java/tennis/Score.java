@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Score {
+    public static final int MIN_POINTS_FOR_DEUCE = 3;
+    public static final int MIN_POINTS_FOR_WINNING = 4;
     private final Player player1;
     private final Player player2;
     private final Map<Player, Integer> points = new HashMap<>(2);
@@ -25,28 +27,31 @@ public class Score {
 
     @Override
     public String toString() {
+        if (isTied()) {
+            return tiedScoreToString();
+        } else {
+            return untiedScoreToString();
+        }
+    }
+
+    private String untiedScoreToString() {
         int player1Points = getPointsFor(player1);
         int player2Points = getPointsFor(player2);
         String score1 = pointsToString(player1Points);
         String score2 = pointsToString(player2Points);
-        if (!isTied()) {
-            if (player1Points < 4 && player2Points < 4) {
-                return String.format("%s - %s", score1, score2);
-            } else if ((player1Points > 3 && player1Points > player2Points + 1) || player2Points > 3 && player2Points > player1Points + 1) {
-                Player winner = player1Points > player2Points ? player1 : player2;
-                return String.format("Game %s", winner.getName());
-            } else {
-                Player playerInFront = player1Points > player2Points ? player1 : player2;
-                return String.format("Advantage %s", playerInFront.getName());
-            }
+        if (player1Points < MIN_POINTS_FOR_WINNING && player2Points < MIN_POINTS_FOR_WINNING) {
+            return String.format("%s - %s", score1, score2);
+        } else if ((player1Points > 3 && player1Points > player2Points + 1) || player2Points > 3 && player2Points > player1Points + 1) {
+            Player winner = player1Points > player2Points ? player1 : player2;
+            return String.format("Game %s", winner.getName());
         } else {
-            return tiedScoreToString();
+            Player playerInFront = player1Points > player2Points ? player1 : player2;
+            return String.format("Advantage %s", playerInFront.getName());
         }
     }
 
-
     private String tiedScoreToString() {
-        if (getPointsFor(player1) < 3) {
+        if (getPointsFor(player1) < MIN_POINTS_FOR_DEUCE) {
             return String.format("%s all", pointsToString(getPointsFor(player1)));
         } else {
             return "Deuce";
