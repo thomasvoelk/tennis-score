@@ -59,7 +59,7 @@ public class TranslateScoreTest extends ScoreTestBase {
         addPoints(player1, 3);
         addPoints(player2, 3);
         addPoints(player1, 1);
-        assertEquals("Advantage " + player1.getName(), score.toString());
+        assertEquals("Advantage John", score.toString());
     }
 
     @Test
@@ -67,7 +67,18 @@ public class TranslateScoreTest extends ScoreTestBase {
         addPoints(player1, 3);
         addPoints(player2, 3);
         addPoints(player2, 1);
-        assertEquals("Advantage " + player2.getName(), score.toString());
+        assertEquals("Advantage Ivan", score.toString());
     }
 
+    @Test
+    public void gamePlayer1_noPointsForPlayer2() {
+        addPoints(player1, 4);
+        assertEquals("Game John", score.toString());
+    }
+
+    @Test
+    public void gamePlayer2_noPointsForPlayer1() {
+        addPoints(player2, 4);
+        assertEquals("Game Ivan", score.toString());
+    }
 }

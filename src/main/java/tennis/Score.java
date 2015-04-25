@@ -32,6 +32,9 @@ public class Score {
         if (player1Points != player2Points) {
             if (player1Points < 4 && player2Points < 4) {
                 return String.format("%s - %s", score1, score2);
+            } else if ((player1Points > 3 && player1Points > player2Points + 1) || player2Points > 3 && player2Points > player1Points + 1) {
+                Player winner = player1Points > player2Points ? player1 : player2;
+                return String.format("Game %s", winner.getName());
             } else {
                 Player playerInFront = player1Points > player2Points ? player1 : player2;
                 return String.format("Advantage %s", playerInFront.getName());
