@@ -29,9 +29,9 @@ public class TennisGame {
 
     public String getScore() {
         if (isTied()) {
-            return tiedScoreToString();
+            return getTiedScore();
         } else {
-            return untiedScoreToString();
+            return getUntiedScore();
         }
     }
 
@@ -39,18 +39,18 @@ public class TennisGame {
         return getPointsFor(player1) == getPointsFor(player2);
     }
 
-    private String tiedScoreToString() {
-        if (gameHasReachedDeuce()) {
+    private String getTiedScore() {
+        if (gameHasReachedDeuceStage()) {
             return "Deuce";
         } else {
             return String.format("%s all", pointsToString(player1));
         }
     }
 
-    private String untiedScoreToString() {
+    private String getUntiedScore() {
         if (onePlayerHasWonTheGame()) {
             return String.format("Game %s", getPlayerWithMostPoints().getName());
-        } else if (gameHasReachedDeuce()) {
+        } else if (gameHasReachedDeuceStage()) {
             return String.format("Advantage %s", getPlayerWithMostPoints().getName());
         } else {
             return String.format("%s - %s", pointsToString(player1), pointsToString(player2));
@@ -67,7 +67,7 @@ public class TennisGame {
     }
 
 
-    private boolean gameHasReachedDeuce() {
+    private boolean gameHasReachedDeuceStage() {
         return getPointsFor(player1) >= MIN_POINTS_FOR_DEUCE && getPointsFor(player2) >= MIN_POINTS_FOR_DEUCE;
     }
 
