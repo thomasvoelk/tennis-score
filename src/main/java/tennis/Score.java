@@ -1,8 +1,15 @@
 package tennis;
 
 public class Score {
+    private final Player player1;
+    private final Player player2;
     private int player1Points;
     private int player2Points;
+
+    public Score(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 
     public int getPlayer1Points() {
         return player1Points;

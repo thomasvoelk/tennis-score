@@ -4,18 +4,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class KeepScoreTest {
+public class KeepScoreTest extends ScoreTestBase {
 
     @Test
     public void newScoreStartsAtZero() {
-        Score score = new Score();
         assertEquals(0, score.getPlayer1Points());
         assertEquals(0, score.getPlayer2Points());
     }
 
     @Test
     public void addOnePointToScore() {
-        Score score = new Score();
         score.addPlayer1Point();
         assertEquals(1, score.getPlayer1Points());
         assertEquals(0, score.getPlayer2Points());
@@ -24,7 +22,6 @@ public class KeepScoreTest {
 
     @Test
     public void addMultiplePointsToScore() {
-        Score score = new Score();
         score.addPlayer1Point();
         score.addPlayer1Point();
         score.addPlayer1Point();

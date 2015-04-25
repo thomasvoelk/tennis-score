@@ -1,31 +1,13 @@
 package tennis;
 
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TranslateScoreTest {
+public class TranslateScoreTest extends ScoreTestBase {
 
-    private Score score;
 
-    @Before
-    public void setUp() throws Exception {
-        score = new Score();
-    }
-
-    private void addPlayer1Points(int points) {
-        for (int i = 0; i < points; i++) {
-            score.addPlayer1Point();
-        }
-    }
-
-    private void addPlayer2Points(int points) {
-        for (int i = 0; i < points; i++) {
-            score.addPlayer2Point();
-        }
-    }
 
     @Test
     public void onlyPlayerOneScores() {
@@ -80,7 +62,7 @@ public class TranslateScoreTest {
         addPlayer1Points(3);
         addPlayer2Points(3);
         addPlayer1Points(1);
-    assertEquals("Advantage 1", score.toString());
+        assertEquals("Advantage 1", score.toString());
     }
 
 }
