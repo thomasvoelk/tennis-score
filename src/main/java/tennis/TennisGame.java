@@ -6,23 +6,23 @@ class TennisGame {
     private static final int NEEDED_DIFFERENCE_FOR_WINNING = 1;
     private final Player player1;
     private final Player player2;
-    private final Map<Player, Points> score2 = new HashMap<>(2);
+    private final Map<Player, Points> score = new HashMap<>(2);
 
 
     TennisGame(Player player1, Player player2) {
-        score2.put(player1, new Points());
-        score2.put(player2, new Points());
+        score.put(player1, new Points());
+        score.put(player2, new Points());
         this.player1 = player1;
         this.player2 = player2;
     }
 
     void scorePointFor(Player player) {
-        score2.put(player, getPointsFor(player).addOne());
+        score.put(player, getPointsFor(player).addOne());
     }
 
 
     Points getPointsFor(Player player) {
-        return score2.get(player);
+        return score.get(player);
     }
 
     String getScore() {
