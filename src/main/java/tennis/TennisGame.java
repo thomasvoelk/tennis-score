@@ -80,15 +80,12 @@ public class TennisGame {
     }
 
     private String pointsToString(Player player) {
-        switch (getPointsFor(player)) {
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            case 3:
-                return "Forty";
-            default:
-                return "Love";
-        }
+        final Map<Integer, String> stringsByPoints = new HashMap<Integer, String>() {{
+            put(0, "Love");
+            put(1, "Fifteen");
+            put(2, "Thirty");
+            put(3, "Forty");
+        }};
+        return stringsByPoints.get(getPointsFor(player));
     }
 }
