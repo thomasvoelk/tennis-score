@@ -1,11 +1,28 @@
 package tennis;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TranslateScoreTest extends ScoreTestBase {
+public class TranslateScoreTest {
 
+    Player player1;
+    Player player2;
+    TennisGame game;
+
+    @Before
+    public void setUp() throws Exception {
+        player1 = new Player("John");
+        player2 = new Player("Ivan");
+        game = new TennisGame(player1, player2);
+    }
+
+    private void scorePoints(Player player, int points) {
+        for (int i = 0; i < points; i++) {
+            game.scorePointFor(player);
+        }
+    }
 
     @Test
     public void onlyPlayerOneScores() {
