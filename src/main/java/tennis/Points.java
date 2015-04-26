@@ -1,9 +1,8 @@
 package tennis;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class Points implements Comparable<Points> {
+class Points implements Comparable<Points> {
     private static final int MIN_POINTS_FOR_DEUCE = 3;
     private static final int MIN_POINTS_FOR_WINNING = 4;
     private static final Map<Integer, String> textByCount = new HashMap<Integer, String>() {{
@@ -14,14 +13,20 @@ public class Points implements Comparable<Points> {
     }};
     int count;
 
+    Points() {
+        this.count = 0;
+    }
+
+    private Points(int count) {
+        this.count = count;
+    }
+
     Points addOne() {
-        this.count++;
-        return this;
+        return add(1);
     }
 
     Points add(int i) {
-        this.count += i;
-        return this;
+        return new Points(count + i);
     }
 
     boolean areEnoughForWinningTheGame() {
@@ -36,6 +41,9 @@ public class Points implements Comparable<Points> {
         return this.compareTo(other) > 0;
     }
 
+    int intValue() {
+        return count;
+    }
 
     @Override
     public String toString() {

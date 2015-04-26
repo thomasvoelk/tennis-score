@@ -26,15 +26,15 @@ public class KeepScoreTest {
 
     @Test
     public void newScoreStartsAtZero() {
-        assertEquals(0, game.getPointsFor(player1));
-        assertEquals(0, game.getPointsFor(player2));
+        assertEquals(0, game.getPointsFor(player1).intValue());
+        assertEquals(0, game.getPointsFor(player2).intValue());
     }
 
     @Test
     public void addOnePointToScore() {
         scorePoints(player1, 1);
-        assertEquals(1, game.getPointsFor(player1));
-        assertEquals(0, game.getPointsFor(player2));
+        assertEquals(1, game.getPointsFor(player1).intValue());
+        assertEquals(0, game.getPointsFor(player2).intValue());
     }
 
 
@@ -42,8 +42,8 @@ public class KeepScoreTest {
     public void addMultiplePointsToScore() {
         scorePoints(player1, 3);
         scorePoints(player2, 1);
-        assertEquals(3, game.getPointsFor(player1));
-        assertEquals(1, game.getPointsFor(player2));
+        assertEquals(3, game.getPointsFor(player1).intValue());
+        assertEquals(1, game.getPointsFor(player2).intValue());
     }
 
 

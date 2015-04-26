@@ -1,9 +1,9 @@
 package tennis;
 
-public class Player {
+class Player {
     private final String name;
 
-    public Player(String name) {
+    Player(String name) {
         this.name = name;
     }
 
@@ -21,7 +21,7 @@ public class Player {
         return name.hashCode();
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 }
